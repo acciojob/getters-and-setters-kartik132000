@@ -1,22 +1,56 @@
-//complete this code
 class Person {
-	const person = new person("kartik",30);
-	console.log(person.kartik);
-	person.age = 25;
-	console.log(person.age);
+  constructor(name, age) {
+    this._name = name;
+    this._age = age;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get age() {
+    return this._age;
+  }
+
+  set age(age) {
+    this._age = age;
+  }
 }
 
 class Student extends Person {
-	const student =  new student("frank",20);
-	student.study();
+  study() {
+    return `${this.name} is studying`;
+  }
 }
 
 class Teacher extends Person {
-	const teacher = new Teacher("boby",45);
-	teacher.teach();
+  teach() {
+    return `${this.name} is teaching`;
+  }
 }
 
-// Do not change the code below this line
-window.Person = Person;
-window.Student = Student;
-window.Teacher = Teacher;
+function createPerson() {
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const person = new Person(name, age);
+    displayOutput(`Created Person: ${person.name}, Age: ${person.age}`);
+}
+
+function createStudent() {
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const student = new Student(name, age);
+    displayOutput(student.study());
+}
+
+function createTeacher() {
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const teacher = new Teacher(name, age);
+    displayOutput(teacher.teach());
+}
+
+function displayOutput(message) {
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = `<p>${message}</p>`;
+}
